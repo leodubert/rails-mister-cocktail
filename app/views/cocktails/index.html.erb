@@ -1,3 +1,28 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
-<p><%= @cocktail %></p>
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
+  <div class="card-description">
+    <h2>Discover cool cocktails</h2>
+    <p>An easy way to get drunk, but still be classy</p>
+  </div>
+  <img class="card-user avatar" src="user.jpg">
+  <a class="card-link" href="#" ></a>
+</div>
+
+
+<div class="container padded">
+  <div class="row">
+    <% @cocktails.each do |cocktail|  %>
+     <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
+        <div class="card-category">Cocktail</div>
+        <div class="card-description">
+          <h2><%= cocktail.name %></h2>
+        </div>
+        <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+      </div>
+  </div>
+  <% end %>
+ </div>
+<div>
+<div class="container padded">
+<%= link_to "Create Cocktail", new_cocktail_path, class: "btn-treehouse" %>
+<div>

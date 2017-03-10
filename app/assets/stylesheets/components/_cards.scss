@@ -4,6 +4,8 @@
   background-size: cover !important;
   color: white;
   position: relative;
+  margin-top: 10px;
+  position: relative;
 }
 .card-user {
   position: absolute;
@@ -73,6 +75,19 @@
 .media_small {
         margin-top:20px;
     }
+
+.card-icon {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  color: transparent;
+}
+
+.card:hover {
+  .card-icon {
+    color: white;
+  }
+}
 
 
 /* Build your own button classes ! */

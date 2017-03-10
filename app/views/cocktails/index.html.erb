@@ -1,30 +1,48 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
-  <div class="card-description">
-    <h2>Discover cool cocktails</h2>
+
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/random');">
+  <div class="banner-content">
+    <h1>Discover cool cocktails</h1>
     <p>An easy way to get drunk, but still be classy</p>
+    <%= link_to "Create Cocktail", new_cocktail_path, class: "btn-treehouse marge-bottom" %>
   </div>
-  <img class="card-user avatar" src="user.jpg">
-  <a class="card-link" href="#" ></a>
 </div>
 
 
-<div class="container padded">
+
+
+
+<div class="container">
   <div class="row">
     <% @cocktails.each do |cocktail|  %>
-     <div class="col-xs-12 col-sm-4">
-      <div class = "media_small">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
-        <div class="card-category">Cocktail</div>
-        <div class="card-description">
-          <h2><%= cocktail.name %></h2>
+        <div class="col-xs-12 col-sm-4 ">
+
+            <% if cocktail.photo? %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path cocktail.photo.path%>')">
+                  <div class = "card-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                  <div class="card-category">Cocktail</div>
+                  <div class="card-description">
+                    <h2><%= cocktail.name %></h2>
+                  </div>
+                <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+                </div>
+            <% else %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
+                 <div class = "card-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                  <div class="card-category">Cocktail</div>
+                  <div class="card-description">
+                    <h2><%= cocktail.name %></h2>
+                  </div>
+                  <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+                </div>
+            <% end %>
         </div>
-        <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
-      </div>
-      </div>
+      <% end %>
   </div>
-  <% end %>
+
  </div>
-<div>
-<div class="container padded">
-<%= link_to "Create Cocktail", new_cocktail_path, class: "btn-treehouse" %>
-<div>
+
+
+
+

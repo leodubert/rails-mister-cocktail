@@ -1,11 +1,17 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
-  <div class="card-description">
-    <h2><%= @cocktail.name %></h2>
 
+
+
+<% if @cocktail.photo? %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path @cocktail.photo.path%>')">
+      <h2><%= @cocktail.name %></h2>
+    </div>
+  <% else %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random');">
+    <h2><%= @cocktail.name %></h2>
   </div>
-  <img class="card-user avatar" src="user.jpg">
-  <a class="card-link" href="#" ></a>
-</div>
+
+<% end %>
+
 
 <div class="container text-center padded list-inline">
       <p><% @cocktail.doses.each do |dose| %></p>
@@ -21,6 +27,12 @@
         <% end %>
 </div>
 
-<%= link_to "back to cocktails", cocktails_path %>
+<div class="text-center">
 
-<%= link_to "add a dose", new_cocktail_dose_path(@cocktail) %>
+<%= link_to "back to cocktails", cocktails_path, class: "btn btn-primary btn-sx"%>
+
+<%= link_to "add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-treehouse" %>
+</div>
+
+
+
